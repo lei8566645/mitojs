@@ -31,12 +31,18 @@ export function targetAsString(e: WechatMiniprogram.BaseEvent): string {
 }
 
 export async function getWxMiniDeviceInfo(): Promise<DeviceInfo> {
-  const { pixelRatio, screenHeight, screenWidth } = wx.getSystemInfoSync()
+  const { pixelRatio, screenHeight, screenWidth, brand, model, version, system, platform, SDKVersion } = wx.getSystemInfoSync()
   const netType = await getWxMiniNetWrokType()
   return {
     ratio: pixelRatio,
     clientHeight: screenHeight,
     clientWidth: screenWidth,
+    brand,
+    model,
+    version,
+    system,
+    platform,
+    SDKVersion,
     netType
   }
 }
